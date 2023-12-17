@@ -65,7 +65,7 @@ function getMusic() {
     
     var lookUp = searchInput.value + " music";
     
-    var tubeURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${lookUp}&key=${tubeAPIKey}`
+    var tubeURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${lookUp}&type=videp&key=${tubeAPIKey}`
     fetch(tubeURL)
     .then(function(response) {
         return response.json();
