@@ -27,11 +27,8 @@ function getRecipe() {
     fetch(spoonURL)
     .then(function(response) {
         return response.json();
-        //console.log(response);
     })
     .then(function(data) {
-        console.log(data);
-
         Promise.all(data.map(function(recipe) {
             return fetch(`https://api.spoonacular.com/recipes/${recipe.id}/card?&apiKey=${spoonAPIKey}`)
             .then(function(response) {
@@ -39,7 +36,6 @@ function getRecipe() {
             })
         }))
         .then(function(recipeImages) {
-            console.log(recipeImages);
             cardWrapper.innerHTML = "";
             for (var i = 0; i < data.length; i++) {
     
@@ -56,8 +52,6 @@ function getRecipe() {
                 </div>
                 `
                 cardWrapper.innerHTML += cardHtml;
-                // var recipeID = data[i].id;
-                // var recipeURL = `https://api.spoonacular.com/recipes/${recipeID}/information?&apiKey=${spoonAPIKey}`
                
             }
         })
@@ -75,15 +69,14 @@ function getMusic() {
     fetch(tubeURL)
     .then(function(response) {
         return response.json();
-        //console.log(response);
     })
     .then(function(data) {
+            console.log("YouTube API Data:", data);
             var randomIndex = Math.floor(Math.random() * data.items.length);
             var videoId = data.items[randomIndex].id.videoId;
             var videoUrl = `https://www.youtube.com/embed/${videoId}`;
             var videoHtml = `
             <iframe width="560" height="315" src=${videoUrl} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
-            console.log(data);
             video.innerHTML = videoHtml;
           
 })
@@ -120,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             localStorage.setItem('inputValue', inputValue);
 
-            console.log('Input value:', inputValue);
+            // console.log('Input value:', inputValue);
         }
     });
 });
