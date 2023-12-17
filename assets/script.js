@@ -74,7 +74,9 @@ function getMusic() {
             console.log("YouTube API Data:", data);
             var randomIndex = Math.floor(Math.random() * data.items.length);
             var videoId = data.items[randomIndex].id.videoId;
-            var videoUrl = `https://www.youtube.com/embed/${videoId}`;
+            // var videoUrl = `https://www.youtube.com/embed/${videoId}`;
+            var videoUrl = `https://www.youtube.com/embed/tyVeWm_P0Rk`;
+
             var videoHtml = `
             <iframe width="560" height="315" src=${videoUrl} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
             video.innerHTML = videoHtml;
